@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	<div style='border:1px solid #888; padding:0.5em; margin-bottom:1em;'>
+		
+		<h1>{{post.title}}</h1>
+		<em style="font-size:0.8em;">
+			Posted on {{post.created|date:"d/m/Y"}} by {{post.author.first_name}} {{post.author.last_name}}
+		</em>
+		<p>{{post.body_text}}</p>
+		<div style="font-size:0.9em;">
+			<h4>Tags</h4>
+			{% for tag in post.tags.all %}
+				<strong style="background-color: #CCC; padding:0.25em; margin-right:1em;">{{tag}}</strong>
+			{% endfor %}
+		</div>
+	</div>
+	<a href="{% url 'posts:list_all' %}">Back to list of posts</a>
+{% endblock content %}

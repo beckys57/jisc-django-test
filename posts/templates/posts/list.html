@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	Sort by:
+	<a href="?sort=date">Newest first</a>	
+	<a href="?sort=pop">Most popular first</a>	
+	{% for post in posts %}
+		<div style='border:1px solid #888; padding:0.5em; margin-bottom:1em;'>
+			
+			<h2><a href="{% url 'posts:view_post' post.id %}">{{post.title}}<a></h2>
+			<em style="font-size:0.8em;">{{post.created|date:"d/m/Y"}}</em>
+			<p>{{post.body_text|truncatechars:100}}</p>
+		</div>
+	{% endfor %}
+
+{% endblock content %}
